@@ -46,8 +46,8 @@ from urllib3.util import Retry
 # Config par défaut (tout est surchargeable en CLI)
 # --------------------------------------------------------------------------- #
 HERE = Path(__file__).resolve().parent
-DEFAULT_SOURCES_FILE = HERE / "sources.txt"
-DEFAULT_EXTRA_FILE = HERE / "extra-domains.txt"
+DEFAULT_SOURCES_FILE = HERE / "config" / "sources.txt"
+DEFAULT_EXTRA_FILE = HERE / "config" / "extra-domains.txt"
 DEFAULT_OUTPUT = HERE / "Liste.txt"
 DEFAULT_CACHE_DIR = HERE / ".cache"
 
