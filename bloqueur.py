@@ -73,6 +73,33 @@ log.setLevel(logging.DEBUG)  # le filtrage se fait au niveau des handlers, pas d
 
 _LOG_FORMAT = logging.Formatter("%(asctime)s  %(levelname)-7s  %(message)s", datefmt="%H:%M:%S")
 
+console_handler = None
+
+class InterleavedStreamHandler(logging.StreamHandler):
+    """Handler console qui évite de casser la barre de progression en cours."""
+    def __init__(self, stream=None):
+        super().__init__(stream)
+        self.buffered_records = []
+        self.buffer_enabled = False
+
+    def emit(self, record):
+        if self.buffer_enabled and record.levelno >= logging.WARNING:
+            self.buffered_records.append(record)
+        else:
+            super().emit(record)
+
+    def flush_buffered(self):
+        self.buffer_enabled = False
+        if self.buffered_records:
+            try:
+                self.stream.write("\n")
+                self.stream.flush()
+            except Exception:
+                pass
+            for r in self.buffered_records:
+                super().emit(r)
+            self.buffered_records.clear()
+
 
 def setup_logging(verbose: bool, log_file: Path | None) -> None:
     """Console : niveau DEBUG si -v, sinon INFO (le détail par source est
@@ -80,10 +107,11 @@ def setup_logging(verbose: bool, log_file: Path | None) -> None:
     Fichier de log (--log-file) : toujours DEBUG, indépendamment de ce qui
     s'affiche à l'écran — utile pour ausculter un run cron après coup sans
     avoir eu besoin de relancer en verbose."""
-    console = logging.StreamHandler()
-    console.setFormatter(_LOG_FORMAT)
-    console.setLevel(logging.DEBUG if verbose else logging.INFO)
-    log.addHandler(console)
+    global console_handler
+    console_handler = InterleavedStreamHandler()
+    console_handler.setFormatter(_LOG_FORMAT)
+    console_handler.setLevel(logging.DEBUG if verbose else logging.INFO)
+    log.addHandler(console_handler)
 
     if log_file is not None:
         file_handler = logging.FileHandler(log_file, encoding="utf-8")
@@ -327,6 +355,9 @@ def download_and_extract(urls: list[str], workers: int, cache_dir: Path | None, 
     per_source_domains: dict[str, set[str]] = {}
     session = make_session()
 
+    if console_handler and not verbose:
+        console_handler.buffer_enabled = True
+
     cpu_count = os.cpu_count() or 1
     use_multiprocessing = cpu_count > 1
     cpu_pool = ProcessPoolExecutor(max_workers=max(cpu_count - 1, 1)) if use_multiprocessing else None
@@ -362,6 +393,8 @@ def download_and_extract(urls: list[str], workers: int, cache_dir: Path | None, 
                     log.debug("[parse] %d domaines  %s", len(per_source_domains[url]), url)
     finally:
         progress.finish()
+        if console_handler:
+            console_handler.flush_buffered()
         if cpu_pool is not None:
             cpu_pool.shutdown(wait=True)
 
