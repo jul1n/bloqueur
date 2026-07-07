@@ -26,7 +26,6 @@ https://raw.githubusercontent.com/mhhakim/pihole-blocklist/master/list.txt
 
 # --- Grandes listes (> 100 Ko) ---
 http://sysctl.org/cameleon/hosts
-https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts_without_controversies.txt
 https://adaway.org/hosts.txt
 https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt
 https://phishing.army/download/phishing_army_blocklist_extended.txt
@@ -82,3 +81,4 @@ https://divested.dev/hosts-domains-wildcards
 # https://v.firebog.net/hosts/Airelle-trc.txt
 # https://v.firebog.net/hosts/Airelle-hrsk.txt
 # https://raw.githubusercontent.com/xRuffKez/NRD/main/lists/14-day/adblock/nrd-14day_adblock.txt
+# https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts_without_controversies.txt
