@@ -176,7 +176,7 @@ aussi un déclenchement manuel depuis l'onglet Actions) :
 Une fois en place, il suffit de pointer AdGuard Home vers l'URL brute :
 
 ```
-https://raw.githubusercontent.com/jul1n/bloqueur/main/Liste.txt
+https://raw.githubusercontent.com/jul1n/bloqueur/main/dist/Liste.txt
 ```
 
 exactement comme pour HaGeZi ou OISD — plus besoin de relancer le script à

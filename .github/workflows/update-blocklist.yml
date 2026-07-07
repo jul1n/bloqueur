@@ -28,7 +28,7 @@ jobs:
         with:
           path: |
             .cache
-            Liste.txt.prev
+            dist/Liste.txt.prev
           key: bloqueur-${{ github.run_id }}
           restore-keys: |
             bloqueur-
@@ -37,7 +37,7 @@ jobs:
         id: generate
         run: |
           python bloqueur.py \
-            --output Liste.txt \
+            --output dist/Liste.txt \
             --format hosts \
             --log-file run.log \
             --no-archive \
@@ -48,7 +48,7 @@ jobs:
         run: |
           git config user.name "bloqueur-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add Liste.txt Liste.txt.prev
+          git add dist/Liste.txt dist/Liste.txt.prev
           if ! git diff --cached --quiet; then
             git commit -m "Mise à jour automatique de la blocklist ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
             git push

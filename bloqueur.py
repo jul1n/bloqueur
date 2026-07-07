@@ -48,7 +48,7 @@ from urllib3.util import Retry
 HERE = Path(__file__).resolve().parent
 DEFAULT_SOURCES_FILE = HERE / "config" / "sources.txt"
 DEFAULT_EXTRA_FILE = HERE / "config" / "extra-domains.txt"
-DEFAULT_OUTPUT = HERE / "Liste.txt"
+DEFAULT_OUTPUT = HERE / "dist" / "Liste.txt"
 DEFAULT_CACHE_DIR = HERE / ".cache"
 
 TIMEOUT_S = 15
@@ -507,6 +507,7 @@ def write_output(domains: list[str], output: Path, fmt: str, *,
         content = "\n".join(domains) + "\n"
         if header:
             content = header + content
+    output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(content, encoding="utf-8")
     log.debug("écrit : %s (%d domaines, format %s)", output, len(domains), fmt)
 
