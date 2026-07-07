@@ -13,23 +13,15 @@ https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimet
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
 https://v.firebog.net/hosts/Easyprivacy.txt
 https://v.firebog.net/hosts/Prigent-Ads.txt
-https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts
 https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
-https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
 https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt
 https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts
 https://urlhaus.abuse.ch/downloads/hostfile/
-https://www.dshield.org/feeds/suspiciousdomains_Medium.txt
-https://www.dshield.org/feeds/suspiciousdomains_High.txt
 https://raw.githubusercontent.com/matomo-org/referrer-spam-blacklist/master/spammers.txt
-https://ssl.bblck.me/blacklists/hosts-file.txt
-https://raw.githubusercontent.com/InnoScorpio/W3C_annual_most_used_survey_blocklist/master/Top500_Domains.txt
 https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt
 https://raw.githubusercontent.com/anudeepND/blacklist/master/facebook.txt
-https://v.firebog.net/hosts/BillStearns.txt
-https://hosts.nfz.moe/basic/hosts
 https://raw.githubusercontent.com/mhhakim/pihole-blocklist/master/list.txt
 
 # --- Grandes listes (> 100 Ko) ---
@@ -44,20 +36,15 @@ https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
 https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt
 https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
 https://v.firebog.net/hosts/Prigent-Malware.txt
-https://v.firebog.net/hosts/Shalla-mal.txt
-https://www.dshield.org/feeds/suspiciousdomains_Low.txt
 https://hostsfile.org/Downloads/hosts.txt
 https://raw.githubusercontent.com/vokins/yhosts/master/hosts
 https://winhelp2002.mvps.org/hosts.txt
 https://raw.githubusercontent.com/RooneyMcNibNug/pihole-stuff/master/SNAFU.txt
-https://hostsfile.mine.nu/hosts0.txt
 https://www.joewein.net/dl/bl/dom-bl-base.txt
 https://hostfiles.frogeye.fr/multiparty-trackers-hosts.txt
 https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/android-tracking.txt
 https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt
-https://v.firebog.net/hosts/Airelle-trc.txt
 https://raw.githubusercontent.com/HorusTeknoloji/TR-PhishingList/master/url-lists.txt
-https://v.firebog.net/hosts/Airelle-hrsk.txt
 https://raw.githubusercontent.com/chadmayfield/my-pihole-blocklists/master/lists/pi_blocklist_porn_top1m.list
 
 # --- Anciennement désactivées faute de parsing robuste : le nouveau parseur
@@ -77,7 +64,21 @@ https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt
 # OISD Big : très peu de faux positifs, "set it and forget it".
 https://big.oisd.nl/
-# Domaines nouvellement enregistrés (souvent utilisés pour le phishing/spam).
-https://raw.githubusercontent.com/xRuffKez/NRD/main/lists/14-day/adblock/nrd-14day_adblock.txt
 # Divested : liste combinée hosts/domains/wildcards, orientée vie privée.
 https://divested.dev/hosts-domains-wildcards
+
+# --- SOURCES ARCHIVÉES Car HORS-LIGNE/OBSOLÈTES (Juillet 2026) ---
+# https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
+# https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
+# https://www.dshield.org/feeds/suspiciousdomains_Medium.txt
+# https://www.dshield.org/feeds/suspiciousdomains_High.txt
+# https://ssl.bblck.me/blacklists/hosts-file.txt
+# https://raw.githubusercontent.com/InnoScorpio/W3C_annual_most_used_survey_blocklist/master/Top500_Domains.txt
+# https://v.firebog.net/hosts/BillStearns.txt
+# https://hosts.nfz.moe/basic/hosts
+# https://v.firebog.net/hosts/Shalla-mal.txt
+# https://www.dshield.org/feeds/suspiciousdomains_Low.txt
+# https://hostsfile.mine.nu/hosts0.txt
+# https://v.firebog.net/hosts/Airelle-trc.txt
+# https://v.firebog.net/hosts/Airelle-hrsk.txt
+# https://raw.githubusercontent.com/xRuffKez/NRD/main/lists/14-day/adblock/nrd-14day_adblock.txt
