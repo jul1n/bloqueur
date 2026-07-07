@@ -174,7 +174,11 @@ def print_summary(*, sources_total: int, per_source_counts: dict, cache_hits: in
     """Résumé de fin en boîte ASCII simple (+/-/|) : compatible avec
     n'importe quel terminal, y compris sans support Unicode."""
     weak = sum(1 for c in per_source_counts.values() if c < MIN_HEALTHY_DOMAINS)
-    size_kb = output.stat().st_size / 1024 if output.exists() else 0
+    size_bytes = output.stat().st_size if output.exists() else 0
+    if size_bytes >= 1024 * 1024:
+        size_str = f"{size_bytes / (1024 * 1024):.1f} Mo"
+    else:
+        size_str = f"{size_bytes / 1024:.0f} Ko"
 
     rows = [
         ("Sources", f"{sources_total} ({sources_total - dead} OK, {cache_hits} en cache, "
@@ -189,7 +193,7 @@ def print_summary(*, sources_total: int, per_source_counts: dict, cache_hits: in
     else:
         rows.append(("Évolution", "premier run (pas de comparaison)"))
     rows += [
-        ("Sortie", f"{output.name}  ({fmt}, {size_kb:.0f} Ko)"),
+        ("Sortie", f"{output.name}  ({fmt}, {size_str})"),
         ("Durée", f"{elapsed:.1f}s"),
     ]
     label_w = max(len(r[0]) for r in rows)
