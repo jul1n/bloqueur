@@ -79,26 +79,14 @@ class InterleavedStreamHandler(logging.StreamHandler):
     """Handler console qui évite de casser la barre de progression en cours."""
     def __init__(self, stream=None):
         super().__init__(stream)
-        self.buffered_records = []
         self.buffer_enabled = False
 
     def emit(self, record):
         if self.buffer_enabled and record.levelno >= logging.WARNING:
-            self.buffered_records.append(record)
-        else:
-            super().emit(record)
-
-    def flush_buffered(self):
-        self.buffer_enabled = False
-        if self.buffered_records:
-            try:
-                self.stream.write("\n")
-                self.stream.flush()
-            except Exception:
-                pass
-            for r in self.buffered_records:
-                super().emit(r)
-            self.buffered_records.clear()
+            # Ignore les warnings/errors sur la console pour garder l'affichage propre.
+            # Ils restent écrits dans le fichier de log si --log-file est spécifié.
+            return
+        super().emit(record)
 
 
 def setup_logging(verbose: bool, log_file: Path | None) -> None:
@@ -394,7 +382,7 @@ def download_and_extract(urls: list[str], workers: int, cache_dir: Path | None, 
     finally:
         progress.finish()
         if console_handler:
-            console_handler.flush_buffered()
+            console_handler.buffer_enabled = False
         if cpu_pool is not None:
             cpu_pool.shutdown(wait=True)
 
