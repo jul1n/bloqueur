@@ -66,6 +66,22 @@ https://big.oisd.nl/
 # Divested : liste combinée hosts/domains/wildcards, orientée vie privée.
 https://divested.dev/hosts-domains-wildcards
 
+# --- Nouveaux ajouts recommandés (Juillet 2026) ---
+# NextDNS CNAME Cloaking Blocklist : blocage du pistage masqué par CNAME.
+https://raw.githubusercontent.com/nextdns/cname-cloaking-blocklist/master/domains
+# Dandelion Sprout - Game Console Adblock List : pour consoles de jeux.
+https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Game%20Console%20Adblock%20List.txt
+# AdGuard Mobile Ads Filter (Adservers Section) : pour les applications mobiles.
+https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/adservers.txt
+# HaGeZi Ultimate : version ultra-strict de HaGeZi.
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt
+# Steven Black Alternates (Ads + Tracking + Fake News + Gambling)
+https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts
+# HaGeZi Anti-Gambling : blocage des jeux d'argent / paris.
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/gambling.txt
+# HaGeZi Fake & Spam Stores : faux sites marchands et arnaques.
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/fake.txt
+
 # --- SOURCES ARCHIVÉES Car HORS-LIGNE/OBSOLÈTES (Juillet 2026) ---
 # https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
 # https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
