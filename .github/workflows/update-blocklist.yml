@@ -8,6 +8,9 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -41,7 +44,7 @@ jobs:
             --format hosts \
             --log-file run.log \
             --no-archive \
-            --max-dead-pct 30
+            --max-dead-pct 50
         continue-on-error: true   # on committe quand même le résultat, l'échec du job est décidé plus bas
 
       - name: Committer si changement
