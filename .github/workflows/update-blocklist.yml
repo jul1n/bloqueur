@@ -54,7 +54,7 @@ jobs:
           git add dist/Liste.txt dist/Liste.txt.prev
           if ! git diff --cached --quiet; then
             git commit -m "Mise à jour automatique de la blocklist ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
-            git push
+            git push origin HEAD:${{ github.ref_name }}
           else
             echo "Rien à committer (liste inchangée)."
           fi
