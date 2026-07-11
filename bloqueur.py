@@ -48,6 +48,7 @@ from urllib3.util import Retry
 HERE = Path(__file__).resolve().parent
 DEFAULT_SOURCES_FILE = HERE / "config" / "sources.txt"
 DEFAULT_EXTRA_FILE = HERE / "config" / "extra-domains.txt"
+DEFAULT_EXCLUDE_FILE = HERE / "config" / "exclude-domains.txt"
 DEFAULT_OUTPUT = HERE / "dist" / "Liste.txt"
 DEFAULT_CACHE_DIR = HERE / ".cache"
 
@@ -174,7 +175,14 @@ def print_summary(*, sources_total: int, per_source_counts: dict, cache_hits: in
     """Résumé de fin en boîte ASCII simple (+/-/|) : compatible avec
     n'importe quel terminal, y compris sans support Unicode."""
     weak = sum(1 for c in per_source_counts.values() if c < MIN_HEALTHY_DOMAINS)
-    size_bytes = output.stat().st_size if output.exists() else 0
+    out_al = output.parent / f"{output.stem}_A-L{output.suffix}"
+    out_mz = output.parent / f"{output.stem}_M-Z{output.suffix}"
+    size_bytes = 0
+    if out_al.exists():
+        size_bytes += out_al.stat().st_size
+    if out_mz.exists():
+        size_bytes += out_mz.stat().st_size
+
     if size_bytes >= 1024 * 1024:
         size_str = f"{size_bytes / (1024 * 1024):.1f} Mo"
     else:
@@ -193,7 +201,7 @@ def print_summary(*, sources_total: int, per_source_counts: dict, cache_hits: in
     else:
         rows.append(("Évolution", "premier run (pas de comparaison)"))
     rows += [
-        ("Sortie", f"{output.name}  ({fmt}, {size_str})"),
+        ("Sortie", f"{output.stem}_A-L/M-Z{output.suffix}  ({fmt}, {size_str})"),
         ("Durée", f"{elapsed:.1f}s"),
     ]
     label_w = max(len(r[0]) for r in rows)
@@ -453,14 +461,21 @@ def _snapshot_path(output: Path) -> Path:
 def load_previous_domains(output: Path) -> set[str] | None:
     """Domaines du run précédent (snapshot texte simple à côté de la sortie),
     pour calculer un diff (+ajoutés / -retirés) sans dépendance externe."""
-    snap = _snapshot_path(output)
-    if snap.exists():
-        return set(snap.read_text(encoding="utf-8", errors="ignore").split())
+    snap_al = output.parent / f"{output.stem}_A-L{output.suffix}.prev"
+    snap_mz = output.parent / f"{output.stem}_M-Z{output.suffix}.prev"
+    if snap_al.exists() or snap_mz.exists():
+        domains = set()
+        if snap_al.exists():
+            domains.update(snap_al.read_text(encoding="utf-8", errors="ignore").split())
+        if snap_mz.exists():
+            domains.update(snap_mz.read_text(encoding="utf-8", errors="ignore").split())
+        return domains
     return None
 
 
 def save_snapshot(output: Path, domains: list[str]) -> None:
-    _snapshot_path(output).write_text("\n".join(domains), encoding="utf-8")
+    # This is handled directly in main for each split file
+    output.with_name(output.name + ".prev").write_text("\n".join(domains), encoding="utf-8")
 
 
 def compute_diff(domains: list[str], previous: set[str] | None) -> dict | None:
@@ -534,7 +549,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Génère une blocklist pub/tracker à partir de plusieurs sources.")
     p.add_argument("--sources", type=Path, default=DEFAULT_SOURCES_FILE, help="fichier listant les URLs sources")
     p.add_argument("--extra", type=Path, default=DEFAULT_EXTRA_FILE, help="fichier de domaines à ajouter manuellement")
-    p.add_argument("--exclude", type=Path, default=None, help="fichier de domaines à exclure (optionnel)")
+    p.add_argument("--exclude", type=Path, default=DEFAULT_EXCLUDE_FILE, help="fichier de domaines à exclure (optionnel)")
     p.add_argument("--output", type=Path, default=DEFAULT_OUTPUT, help="fichier de sortie")
     p.add_argument("--format", choices=["plain", "hosts", "json"], default="plain", help="format de sortie")
     p.add_argument("--workers", type=int, default=MAX_WORKERS, help="téléchargements en parallèle")
@@ -586,15 +601,20 @@ def main(argv: list[str] | None = None) -> int:
     dead = counts.get("echec", 0)
     dead_pct = 100 * dead / len(urls) if urls else 0
 
-    header = None
-    if not args.no_header:
-        header = build_header(
-            sources_total=len(urls), ok=len(urls) - dead, cache=counts.get("cache", 0),
-            dead=dead, domain_count=len(domains), diff=diff, homepage=args.homepage or None,
-        )
-    write_output(domains, args.output, args.format, per_source_counts=per_source_counts,
-                 diff=diff, header=header)
-    save_snapshot(args.output, domains)
+    domains_al = [d for d in domains if d and d[0] in "abcdefghijkl"]
+    domains_mz = [d for d in domains if d and d[0] not in "abcdefghijkl"]
+
+    for suffix, sub_domains in [("_A-L", domains_al), ("_M-Z", domains_mz)]:
+        sub_output = args.output.parent / f"{args.output.stem}{suffix}{args.output.suffix}"
+        header = None
+        if not args.no_header:
+            header = build_header(
+                sources_total=len(urls), ok=len(urls) - dead, cache=counts.get("cache", 0),
+                dead=dead, domain_count=len(sub_domains), diff=diff, homepage=args.homepage or None,
+            )
+        write_output(sub_domains, sub_output, args.format, per_source_counts=per_source_counts,
+                     diff=diff, header=header)
+        save_snapshot(sub_output, sub_domains)
 
     if not args.no_archive:
         archive_run([args.sources, args.extra] + ([args.exclude] if args.exclude else []))

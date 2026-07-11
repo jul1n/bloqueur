@@ -1,0 +1,3 @@
+# exclude-domains.txt — domaines à exclure de la blocklist (liste blanche)
+# Un domaine par ligne. Les sous-domaines sont automatiquement exclus également.
+n2f.com
