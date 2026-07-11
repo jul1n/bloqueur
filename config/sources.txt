@@ -145,6 +145,34 @@ https://adguardteam.github.io/HostlistsRegistry/assets/filter_68.txt
 https://adguardteam.github.io/HostlistsRegistry/assets/filter_56.txt
 # HaGeZi's Threat Intelligence Feeds
 https://adguardteam.github.io/HostlistsRegistry/assets/filter_44.txt
+# 1Hosts (Lite)
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_24.txt
+# HaGeZi's Pro Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt
+# HaGeZi's Normal Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_34.txt
+# HaGeZi's Pro++ Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_51.txt
+# OISD Blocklist Small
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_5.txt
+# Dandelion Sprout's Anti Push Notifications
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_39.txt
+# HaGeZi's Windows/Office Tracker Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_63.txt
+# Dandelion Sprout's Game Console Adblock List
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_6.txt
+# HaGeZi's Apple Tracker Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_67.txt
+# HaGeZi's Gambling Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_47.txt
+# HaGeZi's OPPO & Realme Tracker Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_66.txt
+# Perflyst and Dandelion Sprout's Smart TV Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_7.txt
+# ShadowWhisperer's Dating List
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_57.txt
+# Ukrainian Security Filter
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_62.txt
 
 # --- SOURCES ARCHIVÉES Car HORS-LIGNE/OBSOLÈTES (Juillet 2026) ---
 # https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
