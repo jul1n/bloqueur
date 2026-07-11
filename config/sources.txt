@@ -82,6 +82,68 @@ https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/gambling.tx
 # HaGeZi Fake & Spam Stores : faux sites marchands et arnaques.
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/fake.txt
 
+# --- Listes issues d'AdGuard Home (Juillet 2026) ---
+# AdGuard DNS filter
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt
+# AdAway Default Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt
+# AdGuard DNS Popup Hosts filter
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_59.txt
+# AWAVenue Ads Rule
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_53.txt
+# Malicious URL Blocklist (URLHaus)
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt
+# HaGeZi's Samsung Tracker Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_61.txt
+# HaGeZi's Ultimate Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_49.txt
+# OISD Blocklist Big
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_27.txt
+# Peter Lowe's Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_3.txt
+# ShadowWhisperer Tracking List
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_69.txt
+# Steven Black's List
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_33.txt
+# Dan Pollock's List
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_4.txt
+# HaGeZi's Vivo Tracker Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_65.txt
+# uBlock filters – Badware risks
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_50.txt
+# HaGeZi's Badware Hoster Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_55.txt
+# HaGeZi's DNS Rebind Protection
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_71.txt
+# Scam Blocklist by DurableNapkin
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_10.txt
+# The Big List of Hacked Malware Web Sites
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt
+# Stalkerware Indicators List
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_31.txt
+# Phishing URL Blocklist (PhishTank)
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_30.txt
+# Dandelion Sprout's Anti-Malware List
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_12.txt
+# ShadowWhisperer's Malware List
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_42.txt
+# HaGeZi's Xiaomi Tracker Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_60.txt
+# Phishing Army
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_18.txt
+# HaGeZi's DynDNS Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_54.txt
+# NoCoin Filter List
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_8.txt
+# HaGeZi's Encrypted DNS/VPN/Proxy/Tunnels Bypass
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_52.txt
+# HaGeZi's URL Shortener Blocklist
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_68.txt
+# HaGeZi's The World's Most Abused TLDs
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_56.txt
+# HaGeZi's Threat Intelligence Feeds
+https://adguardteam.github.io/HostlistsRegistry/assets/filter_44.txt
+
 # --- SOURCES ARCHIVÉES Car HORS-LIGNE/OBSOLÈTES (Juillet 2026) ---
 # https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
 # https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
